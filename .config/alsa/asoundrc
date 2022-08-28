@@ -1,0 +1,9 @@
+pcm.pulse_monitor {
+  type pulse
+  device alsa_output.pci-0000_02_02.0.analog-stereo.monitor
+}
+
+ctl.pulse_monitor {
+  type pulse
+  device alsa_output.pci-0000_02_02.0.analog-stereo.monitor
+}
