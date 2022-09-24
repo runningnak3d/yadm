@@ -1,0 +1,11 @@
+include-file = ~/.config/polybar/config.bar
+modules-left = gradient2
+;modules-center = clock
+;modules-right = solidright
+width = 300
+offset-x = 700
+offset-y = 5
+;background = #CC3B4251
+background = #00000000
+override-redirect = true
+wm-restack = i3

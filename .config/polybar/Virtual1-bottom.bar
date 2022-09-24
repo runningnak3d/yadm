@@ -1,0 +1,29 @@
+include-file = ~/.config/polybar/config.bar
+;modules-left = vu-l currentlyplaying
+modules-left = vu-l cava2 currentlyplaying
+;modules-center = cava2
+modules-right = archupdates memory cpu temperature weather powermenu
+bottom = true
+width = 2520
+offset-x = 20
+offset-y = 5
+;background = #CC3B4251
+override-redirect = true
+wm-restack = i3
+padding-left = 2
+padding-right = 2
+;monitor = ${env:MONITOR1:}
+monitor = Virtual1
+
+; Background gradient (vertical steps)
+;   background-[0-9]+ = #aarrggbb
+background-9 = #66000000
+background-8 = #66000000
+background-7 = #66111111
+background-6 = #66333333
+background-5 = #66555555
+background-4 = #66777777
+background-3 = #66999999
+background-2 = #66bbbbbb
+background-1 = #66dddddd
+background-0 = #66ffffff

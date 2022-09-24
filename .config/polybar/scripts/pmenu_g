@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Created By Aditya Shakya
+
+MENU="$(rofi -sep "|" -dmenu -i -p 'System' -theme $HOME/.config/rofi/themes/material_ns.rasi -location 5 -xoffset -20 -yoffset -60 <<< " Lock| Logout| Reboot| Shutdown")"
+            case "$MENU" in
+                *Lock) $HOME/.config/polybar/scripts/i3lock.sh ;;
+                *Logout) i3-msg exit;;
+                *Reboot) sudo reboot ;;
+                *Shutdown) sudo shutdown -h now
+            esac

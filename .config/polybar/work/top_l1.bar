@@ -1,0 +1,15 @@
+include-file = ~/.config/polybar/config.bar
+;modules-left = gradient gradient2 gradient2 gradient2 gradient
+modules-left = gradient
+;modules-center = gradient
+;modules-right = solidright
+width = 406
+;width = 1920
+offset-x = 20
+offset-y = 5
+;background = #CC3B4251
+;background = #CC2A2825
+override-redirect = true
+wm-restack = i3
+;background = #CC434C5E
+background = #00000000

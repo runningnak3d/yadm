@@ -1,0 +1,101 @@
+include-file = ~/.config/polybar/fonts
+[colors]
+xcolor0 = ${xrdb:color0}
+xcolor1 = ${xrdb:color1}
+xcolor2 = ${xrdb:color2}
+xcolor3 = ${xrdb:color3}
+xcolor4 = ${xrdb:color4}
+xcolor5 = ${xrdb:color5}
+xcolor6 = ${xrdb:color6}
+xcolor7 = ${xrdb:color7}
+xcolor8 = ${xrdb:color8}
+xcolor9 = ${xrdb:color9}
+xcolor10 = ${xrdb:color10}
+xcolor11 = ${xrdb:color11}
+xcolor12 = ${xrdb:color12}
+xcolor13 = ${xrdb:color13}
+xcolor14 = ${xrdb:color14}
+xcolor15 = ${xrdb:color15}
+
+shade1 = #652472
+shade2 = #babdb6
+shade3 = #babdb6
+shade4 = #652472
+
+transparent = #00000000
+background = #00000000
+foreground = ${colors.xcolor15}
+
+
+[module/solidright]
+; pink on black
+type = custom/text
+content = "%{T14}%{T-}"
+;content = "▰"
+content-font = 16
+content-foreground = ${colors.shade1}
+content-background = ${colors.background}
+
+[module/negativeright]
+;black on pink
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 7
+content-foreground = ${colors.shade1}
+content-background = ${colors.background}
+
+[module/solidleft]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 14
+content-foreground = ${colors.shade1}
+content-background = ${colors.background}
+
+[module/negativeleft]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade1}
+content-background = ${colors.background}
+
+[module/solidright2]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/negativeright2]
+;black on pink
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/solidlef2t]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/negativeleft2]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/blocksolid2]
+; pink on black
+type = custom/text
+content = "%{T4}ﮋﮋ%{T-}"
+content-font = 7
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}

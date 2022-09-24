@@ -1,0 +1,30 @@
+include-file = ~/.config/polybar/config.bar
+modules-left = i3
+;modules-center = i3 tiling-indicator
+modules-right = xwindow tiling-indicator
+;width = 406
+width = 1000
+;width = 1920
+offset-x = 20
+offset-y = 5
+;background = #553B4251
+;background = #00000000
+override-redirect = true
+wm-restack = i3
+padding-left = 1
+padding-right = 2
+;monitor = ${env:MONITOR1:}
+;monitor = HDMI2
+
+; Background gradient (vertical steps)
+;   background-[0-9]+ = #aarrggbb
+background-0 = #66000000
+background-1 = #66000000
+background-2 = #66111111
+background-3 = #66333333
+background-4 = #66555555
+background-5 = #66777777
+background-6 = #66999999
+background-7 = #66bbbbbb
+background-8 = #66dddddd
+background-9 = #66ffffff

@@ -1,0 +1,13 @@
+include-file = ~/.config/polybar/config.bar
+modules-left = i3 tiling-indicator
+modules-middle = clock
+modules-right = uptime
+;monitor = ${env:MONITOR2:}
+monitor = Virtual2
+offset-x =20
+offset-y = 5
+width = 1880
+override-redirect = true
+wm-restack = i3
+padding-left = 1
+padding-right = 2

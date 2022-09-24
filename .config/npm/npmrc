@@ -1,0 +1,3 @@
+prefix=/home/swango/.local/share/npm
+cache=/home/swango/.cache/npm
+init-module=/home/swango/.config/npm/config/npm-init.js

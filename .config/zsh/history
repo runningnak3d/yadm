@@ -1,0 +1,13 @@
+: 1660590540:0;df -h
+: 1660590433:10103;startx
+: 1660600550:8;sudo rc-service display-manager start
+: 1660600563:0;ps -ef | grep X
+: 1660600579:0;kill -9 2902
+: 1660600586:1;sudo kill -9 2902
+: 1660600632:0;ps -ef | grep X
+: 1660600724:0;sudo rc-service display-manager stop
+: 1660600729:0;ps -ef | grep slim
+: 1660600748:0;kill 114520
+: 1660600752:0;sudo kill 114520
+: 1660600783:44;vi .xinitrc
+: 1660600848:0;exit

@@ -1,0 +1,414 @@
+# Test crap
+bindsym $mod+c		exec --no-startup-id $HOME/.config/i3/scripts/cheat_sheet.sh
+# Mod key
+set $mod Mod4
+set $alt Mod1
+set $caps Mod3
+
+set $home /home/swango
+set $bin /home/swango/.local/bin
+set $center move absolute position center
+
+font pango:Source Code Pro 9
+
+workspace_auto_back_and_forth yes
+
+focus_follows_mouse yes
+mouse_warping none
+
+# Apps
+#set $browser	google-chrome-stable --disable-high-precision-scrolling
+set $browser	google-chrome-stable --disable-high-precision-scrolling
+set $music  	pithos
+set $term   	kitty
+set $rdp	remmina
+set $messenger	pidgin
+set $vpn	kitty -T=work-vpn sudo openvpn --config $HOME/.local/vpn/brian2.ovpn
+
+# App Binds
+bindsym $caps+n             exec --no-startup-id $browser
+bindsym $caps+m             exec --no-startup-id $music
+#bindsym $caps+s             exec steam
+bindsym $caps+r             exec --no-startup-id $rdp
+bindsym $caps+p		    exec --no-startup-id $messenger --config=$HOME/.config/purple
+bindsym $caps+v		    exec --no-startup-id $vpn
+#bindsym $caps+e             exec VirtualBox
+bindsym $caps+$mod+v	    [title="work-vpn"] scratchpad show
+
+# Notification center
+#bindsym $mod+n              gaps right current set 540; exec killall -USR1 deadd-notification-center
+#bindsym $mod+n              focus parent; focus right; exec killall -USR1 deadd-notification-center; gaps right all toggle 540
+#bindsym $mod+Ctrl+n         exec killall -USR1 deadd-notification-center; gaps right current set 10
+
+
+bindsym $mod+r             exec --no-startup-id $HOME/.local/bin/rebalance.py
+bindsym $mod+p		   focus parent
+
+# Random wallpaper
+bindsym $mod+b  exec --no-startup-id feh --no-fehbg --bg-scale $HOME/.local/share/backgrounds -z
+
+# Borders
+# border_radius 0
+for_window [class="^.*"] border pixel 0
+for_window [title="^.*"] border pixel 0
+
+# Gap Variables
+set $inner 12
+set $outer 7
+set $inner_big 40
+set $outer_big 10
+set $inner_tiny 5
+set $outer_tiny 2
+
+set $extra_top 40
+set $extra_bottom 40
+
+# Set Gaps
+gaps inner $inner
+gaps outer $outer
+gaps bottom $extra_bottom
+gaps top $extra_top
+
+# Toggle Gaps
+bindsym $mod+g gaps inner all set $inner; gaps outer all set $outer; gaps bottom all set $extra_bottom; gaps top all set $extra_top; exec --no-startup-id polybar-msg cmd toggle
+bindsym $mod+Ctrl+g gaps inner all set $inner_big; gaps outer all set $outer_big; gaps bottom all set $extra_bottom; gaps top all set $extra_top; exec --no-startup-id polybar-msg cmd toggle
+bindsym $mod+Shift+g gaps inner all set $inner_tiny; gaps outer all set $outer_tiny; exec --no-startup-id polybar-msg cmd toggle
+bindsym $mod+Ctrl+b gaps bottom all toggle $extra_bottom; exec --no-startup-id $HOME/.config/i3/scripts/polybar_toggle.sh
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id $term 
+
+# Scratchpad
+bindsym $mod+Ctrl+BackSpace scratchpad show
+bindsym $mod+BackSpace floating enable, move position 48 px 48 px, move scratchpad
+
+# Kill
+bindsym $mod+x      kill
+
+# Power
+bindsym $caps+x exec --no-startup-id $HOME/.config/polybar/scripts/pmenu_g
+
+# Restart 
+bindsym $mod+Shift+Ctrl+r restart
+
+# Lock
+bindsym $mod+Ctrl+l exec --no-startup-id $HOME/.config/polybar/scripts/i3lock.sh
+
+# Reload
+bindsym $mod+Ctrl+r reload
+
+# Layout
+bindsym $mod+w layout toggle split
+bindsym $mod+s layout stacked
+bindsym $mod+t layout tabbed
+title_align center
+
+# Focus
+bindsym $mod+Left focus left
+bindsym $mod+j focus left
+bindsym $mod+Down focus down
+bindsym $mod+k focus down
+bindsym $mod+Up focus up
+bindsym $mod+i focus up
+bindsym $mod+Right focus right
+bindsym $mod+l focus right
+
+# Move
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Down move down
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Right move right
+
+# Switch workspave next / previous
+bindsym Ctrl+Shift+l workspace next
+bindsym Ctrl+Shift+j workspace prev
+
+# Resize
+# 10px
+bindsym $mod+Shift+Left       resize shrink width  10px or 10 ppt
+bindsym $mod+Shift+Down       resize shrink height 10px or 10 ppt
+bindsym $mod+Shift+Up         resize grow height   10px or 10 ppt
+bindsym $mod+Shift+Right      resize grow width    10px or 10 ppt
+
+# 1px
+bindsym $mod+Shift+Ctrl+Left  resize shrink width  1px or 1 ppt
+bindsym $mod+Shift+Ctrl+Down  resize shrink height 1px or 1 ppt
+bindsym $mod+Shift+Ctrl+Up    resize grow height   1px or 1 ppt
+bindsym $mod+Shift+Ctrl+Right resize grow width    1px or 1 ppt
+
+# Verticle Split
+bindsym $mod+v split v
+
+# Horizontal Split
+bindsym $mod+h split h
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+bindsym $mod+shift+f        fullscreen toggle global
+
+# Toggle Floating
+bindsym $mod+space floating toggle; $center
+
+# Sticky Toggle
+bindsym $mod+Shift+Ctrl+space sticky toggle
+
+# Floating Mouse Move
+floating_modifier $mod
+bindmouse button1+Shift drag
+
+# Mode Toggle
+bindsym $mod+Shift+space focus mode_toggle
+
+# Paper Mode
+bindsym $mod+Ctrl+space floating toggle; resize set 700px 975px; $center
+
+# Alternating layout
+bindsym $mod+a exec --no-startup-id $HOME/bin/alternating_layouts.py
+bindsym $mod+Ctrl+a exec --no-startup-id kill $(pgrep -f alternating_layouts.py)
+
+# Workspaces
+set $ws1 "1: 1"
+set $ws2 "2: 2"
+set $ws3 "3: 3"
+set $ws4 "4: 4"
+set $ws5 "5: 5"
+set $ws6 "6: 6"
+set $ws7 "7: 7"
+set $ws8 "8: 8"
+set $ws9 "9: 9"
+set $ws10 "10: 10"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym Shift+Ctrl+Left workspace prev
+bindsym Shift+Ctrl+Right workspace next
+
+# Move window to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+
+# Move window to workspace and switch it the workspace
+bindsym $mod+Ctrl+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Ctrl+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Ctrl+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Ctrl+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Ctrl+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Ctrl+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Ctrl+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Ctrl+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Ctrl+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Ctrl+Shift+0 move container to workspace $ws10; workspace $ws10
+
+# Swap workspace between monitors
+bindsym $mod+z move workspace to output left
+bindsym $mod+Ctrl+z exec --no-startup-id $HOME/.local/bin/workspace_move.sh
+
+# Swap containers without changing layout
+bindsym $mod+$alt+Ctrl+Right mark _last; focus right; swap with mark "_last"; unmark _last; focus right
+bindsym $mod+$alt+Ctrl+Left mark _last; focus left; swap with mark "_last"; unmark _last; focus left
+bindsym $mod+$alt+Ctrl+Up mark _last; focus up; swap with mark "_last"; unmark _last; focus up
+bindsym $mod+$alt+Ctrl+Down mark _last; focus down; swap with mark "_last"; unmark _last; focus down
+
+
+# Configure multi-monitor workspaces
+set $disp1 Virtual1
+set $disp2 Virtual3 
+set $disp3 Virtual2
+#set $disp1 echo "$MONITOR1"
+#set $disp2 echo "$MONITOR2"
+#set $disp2 DVI-I-1-1
+
+workspace $ws1 output $disp1
+workspace $ws2 output $disp1
+workspace $ws3 output $disp1
+workspace $ws4 output $disp2
+workspace $ws5 output $disp2
+workspace $ws6 output $disp2
+workspace $ws7 output $disp3
+workspace $ws8 output $disp3
+workspace $ws9 output $disp3
+workspace $ws10 output $disp3
+
+# Tools
+
+# Cycle windows
+bindsym $mod+Tab exec --no-startup-id $bin/i3-container-commander.py
+bindsym $alt+Tab exec --no-startup-id $bin/focus-next-visible.py
+bindsym $alt+Shift+Tab --no-startup-id $bin/focus-next-visible.py reverse
+
+# Screenshot
+set $shots $HOME/Pictures/screenshots
+
+bindsym $mod+Print exec --no-startup-id maim --hidecursor $shots/$(date +%Y-%m-%d_%T).png
+bindsym $mod+Ctrl+Print exec --no-startup-id maim -s $shots/$(date +%Y-%m-%d_%T).png
+bindsym $mod+Shift+Print exec --no-startup-id feh --no-fehbg `ls -t $shots | head -1`
+
+# Screen recording
+set $recordings $HOME/Videos/recordings
+
+bindsym $mod+F12       exec --no-startup-id ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0 -f alsa -ac 2 -i pulse $recordings/$(date +%Y-%m-%d_%T).mp4
+bindsym $mod+Ctrl+F12  exec --no-startup-id killall ffmpeg 
+
+# Media keys
+# Volume
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/.config/polybar/scripts/mixer-osd2 voldown
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/.config/polybar/scripts/mixer-osd2 volup
+bindsym XF86AudioMute exec --no-startup-id $HOME/.config/polybar/scripts/mixer-osd2 mute
+
+# Contol
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/.config/polybar/scripts/brightness-osd up
+bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/.config/polybar/scripts/brightness-osd down
+
+# Calculator
+bindsym XF86Calculator exec --no-startup-id qalculate-gtk
+bindsym $caps+c exec --no-startup-id qalculate-gtk
+
+# Touchpad
+bindsym XF86TouchpadToggle exec --no-startup-id $HOME/bin/toggle-touchpad.sh
+
+# Rofi
+bindsym	$caps+a       exec --no-startup-id rofi-appsmenu
+bindsym $caps+d       exec --no-startup-id rofi -show drun
+
+# Krunner
+bindsym $alt+space    exec --no-startup-id krunner
+
+# Floating Windows
+for_window [class="Pavucontrol"] floating enable, move position 2039px 64px
+for_window [class="Wicd-client.py"] floating enable
+for_window [class="Blueberry.py"] floating enable
+for_window [class="ffplay"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="Sxiv"] floating enable
+for_window [class="mupen64plus"] floating enable
+for_window [class="dolphin-emu"] floating enable
+for_window [class="QjackCtl"] floating enable
+for_window [class="Gxmessage"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+#for_window [class="kitty"] floating enable
+for_window [class="Gnome-calendar"] floating enable, move position 370px 40px
+for_window [class="Qalculate-gtk"] floating enable, move position center # , move position 48px 40px
+for_window [class="Org.gnome.Weather"] floating enable, move position 48px 50px
+for_window [class="krunner"] border none
+
+# Steam
+for_window [class="^Steam$"] floating enable
+
+# Specifc size windows - specify the percent of screen for tiling (ppt), and pixels (px) for floating 
+for_window [class="Cawbird"] resize set width 22ppt
+for_window [class="Pithos" ] resize set width 22ppt
+for_window [class="Pidgin" ] resize set width 15ppt
+
+# Tabbed windows
+for_window [class="remmina"] layout tabbed
+#for_window [class="Pidgin"] layout tabbed
+for_window [window_role="conversation"] layout tabbed
+
+# Stacked windows
+
+# split-h windows
+for_window [class="Google-chrome"] layout splith
+
+# Start in scratchpad
+for_window [title="work-vpn"] move scratchpad
+
+# Startup
+
+# Auto-start
+#exec --no-startup-id $HOME/test.sh
+exec --no-startup-id dunst
+#exec --no-startup-id $HOME/bin/mount-google.drive.sh
+#exec --no-startup-id $HOME/.local/bin/i3altlayout
+#exec --no-startup-id $HOME/bin/alternating_layouts.py
+#exec --no-startup-id synergys
+exec --no-startup-id xmodmap $HOME/.config/X11/Xmodmap 
+
+# Background
+exec_always --no-startup-id feh --no-fehbg --bg-scale $HOME/.local/share/backgrounds/default.png
+#exec --no-startup-id nitrogen --restore
+#exec --no-startup-id autorandr -c
+
+# VMware
+exec --no-startup-id /usr/bin/vmware-user-suid-wrapper &
+
+exec --no-startup-id $HOME/.local/bin/xborders -c $HOME/.config/xborders/config.json
+
+# Reload
+exec_always --no-startup-id xrdb -merge $HOME/.config/X11/Xresources
+#exec_always --no-startup-id xrandr --output eDP1 --mode 1920x1080
+#exec_always --no-startup-id xrdb -merge $HOME/.Xresource 
+#exec_always --no-startup-id killall deadd-noification-center; deadd-notification-center
+exec_always --no-startup-id killall picom-anim; $HOME/.local/bin/picom-anim
+exec_always --no-startup-id $bin/xrdm color qualia
+#exec_always --no-startup-id $bin/xrdm color nord2
+#exec_always --no-startup-id sleep 5; $HOME/.local/bin/xdo-start.sh
+exec_always --no-startup-id killall polybar
+exec_always --no-startup-id sleep 3; polybar -r top_l
+exec_always --no-startup-id sleep 3; polybar -r top_m
+exec_always --no-startup-id sleep 3; polybar -r top_r
+exec_always --no-startup-id sleep 3; polybar -r bottom
+exec_always --no-startup-id sleep 3; polybar -r virtual2
+exec_always --no-startup-id sleep 3; polybar -r virtual3
+exec_always --no-startup-id sleep 3; polybar -r virtual1-bottom
+exec_always --no-startup-id sleep 3; polybar -r virtual2-bottom
+# Colors
+# Nord theme colors
+
+set $nord0   #2E3440
+set $nord1   #3B4252
+set $nord2   #434C5E
+set $nord3   #4C566A
+set $nord4   #D8DEE9
+set $nord5   #E5E9F0
+set $nord6   #ECEFF4
+set $nord7   #8FBCBB
+set $nord8   #88C0D0
+set $nord9   #81A1C1
+set $nord10  #5E81AC
+set $nord11  #BF616A
+set $nord12  #D08770
+set $nord13  #EBCB8B
+set $nord14  #A3BE8C
+set $nord15  #B48EAD
+#                         border  bground text    indicator child_border
+
+#client.focused          #749EAA #749EAA #ffffff #749EAA   #749EAA
+#client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#client.background       #ffffff
+#
+# class                 border  bground text    indicator child_border
+client.focused          #4C7899 #8FBCBB #FFFFFF #749EAA   #749EAA
+#client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #285577
+##client.focused_inactive #FF333333 #5F676A #FFFFFF #484E50   #5F676A
+##client.unfocused        #FF333333 #222222 #888888 #292D2E   #FF000000
+##client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+##client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF

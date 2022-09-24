@@ -1,0 +1,47 @@
+include-file = ~/.config/polybar/fonts
+;radius = 13
+height = 31
+;padding-left = 2
+;padding-right = 2
+module-margin = 1
+enable-ipc = true
+border-color = #749EAA
+border-size = 0
+
+;background = #CC434C5E
+;background = #553B4251
+;background = #885f6655
+;background = #8816262C
+;forground = #ffaf92ac
+;foreground = #ff9FFFCB
+
+line-color = #ffffff
+line-size = 4
+
+separator = |
+sepatator-foreground = #77999999
+
+overline-size = 2
+overline-color = #000000
+underline-size = 2
+underline-color = #000000
+dpi = 110
+
+background = ${colors.background}
+;foreground = ${colors.foreground}
+
+; Background gradient (vertical steps)
+;   background-[0-9]+ = #aarrggbb
+;background-0 = #44000000
+;background-1 = #44000000
+;background-2 = #44111111
+;background-3 = #44333333
+;background-4 = #44555555
+;background-5 = #44777777
+;background-6 = #44999999
+;background-7 = #44bbbbbb
+;background-8 = #44dddddd
+;background-9 = #44ffffff
+
+;radius-top = 15
+;radius-bottmom = 3

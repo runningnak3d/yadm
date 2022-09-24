@@ -1,0 +1,8 @@
+# -- THEME AUTO-WRITTEN DO NOT EDIT
+include "/home/swango/.themes/Nordic-darker/gtk-2.0/gtkrc"
+
+gtk-theme-name  = "Nordic-darker"
+
+include "/home/swango/.gtkrc.mine"
+
+# -- THEME AUTO-WRITTEN DO NOT EDIT

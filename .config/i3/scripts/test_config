@@ -1,0 +1,4 @@
+#set $mod Mod1 # NORMAL
+#set $win Mod4 # NORMAL
+#set $mod Mod4 # GAME
+#set $win Mod1 # GAME

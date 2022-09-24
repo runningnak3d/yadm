@@ -1,0 +1,1331 @@
+[module/gradient]
+type = custom/text
+;content = %{F#696969} █%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}
+;content = %{F#696969} █%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}  %{F#696969} █%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}  %{F#696969} █%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}   %{F#696969} █%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}  %{F#696969} █%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}
+content = %{F#696969}█%{F-}%{F#696969}█%{F-}%{F#696969}█%{F-}
+
+[module/gradient2]
+type = custom/text
+content = %{F#696969}█%{F-}%{F#778899}█%{F-}%{F#696969}█%{F-}
+
+[module/fire]
+type = custom/script
+exec = ~/bin/pb-grad.sh
+;exec = cat ~/.config/polybar/fire.txt
+tail = true
+
+[module/blank]
+type = custom/text
+content = ""
+
+[module/cava]
+type = custom/script
+interval = 1
+tail = true
+format = <label>
+exec = python3 /home/swango/dev/polybar_module_cava/scripts/cava.py
+
+
+
+
+[module/uptime]
+type = custom/script
+interval = 60
+label = %output%
+format = <label>
+content-foreground = #FF000000
+content-backcround = #FF000000
+exec = $HOME/.local/bin/uptime.sh
+
+[module/tiling-indicator]
+type = custom/script
+interval = 1
+label = %output%
+format = <label>
+format-font = 2
+format-foreground = #ffffff
+exec = /home/swango/.local/bin/tile-indicator.py
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+format = <ramp> <label>
+label-font = 1
+label = %percentage%%
+format-font = 6
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+[module/lyrics]
+type = custom/script
+tail = true
+label = %output%
+format = <label>
+;exec = php ~/dev/MPRISLyrics/src/AryToNeX/MPRISLyrics/Loader.php -d linebyline | tail +2
+exec = cat /tmp/l.txt
+
+[module/vu-l]
+type = custom/script
+tail = true
+
+label = %output% 
+format = <label>
+
+exec = $HOME/.local/bin/vu/vu.py -l
+;exec = ~/dev/vu-meter/vu_meter.py
+
+[module/vu-r]
+type = custom/script
+tail = true
+
+label = %output%
+format = <label>
+
+exec = ~/dev/pb_vu-meter/vu.py -r
+
+[module/bluetooth]
+type = custom/script
+exec = /home/swango/.config/polybar/scripts/bluetooth.sh
+interval = 2
+click-left = exec blueberry
+click-right = sudo /home/swango/.config/polybar/scripts/toggle_bluetooth.sh
+format-padding = 1
+;format-background = #000000
+format-foreground = #ffffff
+
+[module/weather]
+type = custom/script
+;exec = $HOME/.local/bin/polybar-forecast
+exec = $HOME/.local/bin/forecast.sh
+interval = 600
+;label = %output%
+label = %{A1:$HOME/.local/bin/gnome-weather.sh:}%output%%{A}
+format = <label>
+;format-font = 12
+format-foreground = #ffffff
+
+[module/battery]
+type = internal/battery
+full-at = 100
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%% %time%h
+label-discharging = %percentage%%
+label-full-margin = 4
+ramp-capacity-0 = 🔋
+ramp-capacity-0-foreground = #f53c3c
+ramp-capacity-1 = 🔋
+ramp-capacity-1-foreground = #ffa900
+ramp-capacity-2 = 🔋
+ramp-capacity-3 = 🔋
+ramp-capacity-4 = 🔋
+
+bar-capacity-width = 10
+bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
+bar-capacity-fill = █
+bar-capacity-fill-foreground = #ddffffff
+bar-capacity-fill-font = 4
+bar-capacity-empty = █
+bar-capacity-empty-font = 4
+bar-capacity-empty-foreground = #44ffffff
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label> <ramp-coreload>
+label = 
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 17
+ramp-coreload-7-foreground = #8fbcbb
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 17
+ramp-coreload-6-foreground = #88c0d0
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 17
+ramp-coreload-5-foreground = #81a1c1
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 17
+ramp-coreload-4-foreground = #5e81ac
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 17
+ramp-coreload-3-foreground = #4C566A
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 17
+ramp-coreload-2-foreground = #434C5E
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 17
+ramp-coreload-1-foreground = #3B4252
+ramp-coreload-7 = █
+ramp-coreload-7-font = 17
+ramp-coreload-0-foreground = #3F4551
+
+[module/date2]
+type = internal/date
+date =    %%{F#99}%d-%m-%Y%{F-}  %%{F#fff}%H:%M:%S%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+
+[module/memory]
+type = internal/memory
+format = <label> [<bar-used>]
+;format = <label>
+;label = RAM
+label = %{T1}RAM: %{T-} %gb_used%/%gb_free%
+
+bar-used-width = 10
+;bar-used-foreground-0 = #aaff77
+;bar-used-foreground-1 = #aaff77
+;bar-used-foreground-2 = #fba922
+;bar-used-foreground-3 = #ff5555
+bar-used-foreground-3 = #2E3440
+bar-used-foreground-2 = #3B4252
+bar-used-foreground-1 = #434C5E
+bar-used-foreground-0 = #4C566A
+bar-used-indicator =  
+bar-used-indicator-font = 2
+bar-used-indicator-foreground = #ff
+;bar-used-fill = ─
+bar-used-fill = ▇
+;bar-used-fill = ▅
+bar-used-fill-font = 0
+bar-used-empty = - 
+;bar-used-empty-font = 6
+bar-used-empty-foreground = #FFFFFF
+
+[module/wireless-network]
+type = internal/network
+interface = xens33
+interval = 1.0
+ping-interval = 10
+;label-connected-minlen = 60
+;label-connected-maxlen = 60
+
+format-connected = <label-connected>
+;label-connected = %{A1:/home/swango/bin/wicd-gtk.sh:}%upspeed% %downspeed%%{A}
+label-connected = %{A1:networkmanager_dmenu&:} %upspeed%  %downspeed%%{A}
+;label-disconnected =    not connected
+label-disconnected-foreground = #66
+;label-font = 3
+
+[module/wireless-network-icon]
+type = internal/network
+interface = xens33
+interval = 1.0
+ping-interval = 10
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %{A1:wicd-gtk.sh:}%essid%%{A}
+label-disconnected =  
+label-disconnected-foreground = #66
+;label-font = 3
+ramp-font = 9
+
+;ramp-signal-0 = 
+ramp-signal-0 = o
+;ramp-signal-1 = 
+ramp-signal-1 = o
+;ramp-signal-2 = 
+ramp-signal-2 = 𓂸
+ramp-signal-2-foreground = #fff
+;ramp-signal-3 = 
+ramp-signal-3 = o
+;ramp-signal-4 = 
+ramp-signal-4 = o
+
+;ramp-signal-foreground = ${colors.foreground}
+
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
+[module/wired-network1]
+type = internal/network
+interface = ens33
+
+interval = 3
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %local_ip%
+label-connected-forground = #FFFFFF
+label-disconnected-forground = #FFFFFF
+;label-disconnected =  
+label-disconnected =
+
+[module/work-vpn]
+type = custom/script
+exec = $HOME/.local/bin/vpn_status.sh
+label = %output%
+format = <label>
+interval = 3
+
+[module/bandwidthmonitor]
+type = custom/script
+exec = $HOME/bin/bandwidth-monitor -c $HOME/bin/config.toml
+# or exec = path/to/bandwidth-rs -c path/to/your/config
+label = %output%
+label-maxlen = 40
+format = <label>
+interval = 1
+
+[module/network]
+type = internal/network
+interface = ens33
+interval = 1.0
+udspeed-minwidth = 3
+label-connected = " %local_ip%  %downspeed%   %upspeed%  "
+label-disconnected = disconnected
+;label-connected-background = #000000
+
+[module/wired-network2]
+type = internal/network
+interface = enp0s20f0u2u4
+
+interval = 3
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %local_ip%
+label-connected-forground = #FFFFFF
+label-disconnected-forground = #FFFFFF
+label-disconnected =  %if_name%
+
+[module/volume]
+type = internal/alsa
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 9
+
+format-volume = <ramp-volume> <label-volume>
+label-muted =   muted
+label-muted-foreground = #66
+label-volume  = %{A3:pavucontrol&:}%percentage%% %{A}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted =  %mountpoint% %free% 
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = #66
+label-mounted-separator =
+
+
+[module/powermenu]
+type = custom/text
+;interval = 60
+;exec = /bin/true
+;content = %{T14}%{T-}
+content = %{T14}⏻%{T-}
+click-left = $HOME/.config/polybar/scripts/pmenu_g
+;type = custom/menu
+
+;label-open = 
+;label-close = X 
+;label-close =  
+;label-separator = |
+;label-separator-foreground = #ffAAAAAA
+
+;menu-minlen = 60
+;menu-0-0 = Power
+;menu-0-0-exec = ~/.config/polybar/scripts/pmenu_g
+;menu-0-0 = Logout 
+;menu-0-0-foreground = #fba922
+;menu-0-0-exec = i3-msg exit
+;menu-0-1 = Reboot 
+;menu-0-1-foreground = #fba922
+;menu-0-1-exec = menu-open-1
+;menu-0-2 = Power off 
+;menu-0-2-foreground = #fba922
+;menu-0-2-exec = menu-open-2
+;menu-0-3 = "Optimus"
+;menu-0-3-foreground = #fba922
+;menu-0-3-exec = menu-open-3
+;menu-0-4 = Lock
+;menu-0-4-foreground = #fba922
+;menu-0-4-exec = ~/.config/polybar/scripts/i3lock.sh
+;menu-0-5 = Sleep
+;menu-0-5-foreground = #fba922
+;menu-0-5-exec = systemctl suspend
+
+
+;menu-1-0 = Cancel
+;menu-1-0-foreground = #fba922
+;menu-1-0-exec = menu-open-0
+;menu-1-1 = Reboot
+;menu-1-1-foreground = #fba922
+;menu-1-1-exec = sudo reboot
+
+;menu-2-0 = Power off
+;menu-2-0-foreground = #fba922
+;menu-2-0-exec = sudo poweroff
+;menu-2-1 = Cancel
+;menu-2-1-foreground = #fba922
+;menu-2-1-exec = menu-open-0
+
+;menu-3-0 = nVidia
+;menu-3-0-foreground = #fba922
+;menu-3-0-exec = optimus-manager --switch nvidia --no-confirm
+;menu-3-1 = Intel
+;menu-3-1-foreground = #fba922
+;menu-3-1-exec = optimus-manager --switch intel --no-confirm
+;menu-3-2 = Current
+;menu-3-2-foreground = #fba922
+;menu-3-2-exec = optimus-manager --status |grep Current| aosd_cat --fore-color=blue --font="bitstream bold 60" -p 7 --x-offset=-1000 --y-offset=-505 --transparency=1 -u 1500 -o 0
+;menu-3-3 = Cancel
+;menu-3-3-foreground = #fba922
+;menu-3-3-exec = menu-open-0
+
+[module/clock]
+type = custom/script
+exec = /bin/date '+%H:%M %A %m/%d'
+interval = 60
+;label = 🕓%output%
+label = 🕓 %{T0}%output%%{T-}
+;label = %output%
+click-left = $HOME/.local/bin/gsimplecal
+label-margin-right = 4
+label-underline = #9FFFCB
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+base-temperature = 40
+warn-temperature = 85
+
+format = <ramp> <label>
+;format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = #f00
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = #FFF
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+;ws-icon-1 = 1;Ⅰ
+;ws-icon-2 = 2;Ⅱ
+;ws-icon-3 = 3;Ⅲ
+;ws-icon-4 = 4;Ⅳ
+;ws-icon-5 = 5;Ⅴ
+;ws-icon-6 = 6;Ⅵ
+;ws-icon-7 = 7;Ⅶ
+;ws-icon-8 = 8;Ⅷ
+;ws-icon-9 = 9;Ⅸ
+;ws-icon-0 = 10Ⅹ
+ws-icon-1 = 1;%{T6}Ⅰ%{T-}
+ws-icon-2 = 2;%{T6}Ⅱ%{T-}
+ws-icon-3 = 3;%{T6}Ⅲ%{T-}
+ws-icon-4 = 4;%{T6}Ⅳ%{T-}
+ws-icon-5 = 5;%{T6}Ⅴ%{T-}
+ws-icon-6 = 6;%{T6}Ⅵ%{T-}
+ws-icon-7 = 7;%{T6}Ⅶ%{T-}
+ws-icon-8 = 8;%{T6}Ⅷ%{T-}
+ws-icon-9 = 9;%{T6}Ⅸ%{T-}
+ws-icon-0 = 10;%{T6}Ⅹ%{T-}
+;ws-icon-1 = 1;%{T13}A%{T-}
+;ws-icon-2 = 2;%{T13}B%{T-}
+;ws-icon-3 = 3;%{T13}C%{T-}
+;ws-icon-4 = 4;%{T13}D%{T-}
+;ws-icon-5 = 5;%{T13}E%{T-}
+;ws-icon-6 = 6;%{T13}F%{T-}
+;ws-icon-7 = 7;%{T13}G%{T-}
+;ws-icon-8 = 8;%{T13}H%{T-}
+;ws-icon-9 = 9;%{T13}I%{T-}
+;ws-icon-0 = 10;%{T13}J%{T-}
+;ws-icon-default = ♟
+ws-icon-font = 2
+ws-icon-foreground-color = #000000
+
+label-dimmed-underline = ${root.background}
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 0
+;label-mode-background = #e60053
+;label-mode-background = #e000F3
+label-mode-background = #FF00FF
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused =  %icon%
+label-focused-foreground = #9FFFCB
+;label-focused-foreground = #363d4c
+;label-focused-background = #dd81A1C1
+label-focused-background = #55000000
+label-focused-underline = #9FFFCB
+label-focused-overline = #9FFFCB
+label-focused-padding = 2
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-unfocused-foreground = #ffffff
+label-unfocused-background = #33888888
+;label-unfocused-foreground = #9E819B
+;label-unfocused-foreground = #af92ac
+;label-unfocused-foreground = #252C3B
+label-unfocused-underline = #000000
+label-unfocused-overline = #000000
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+;label-visible = %index%
+label-visible = %icon%
+label-visible-underline = #FFFFFF
+label-visible-overline = #FFFFFF
+label-visible-foreground = #FFFFFF
+label-visible-background = #33888888
+label-visible-padding = 2
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 3
+
+;label-empty = "B"
+
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 0
+label-separator-foreground = #77DDDDDD
+
+[module/spotify]
+type = custom/script
+interval = 5
+format-prefix = "  "  
+format = <label>
+exec = /home/nicomazz97/.config/polybar/spotify.py
+format-underline = #1db954
+
+[module/currentlyplaying]
+type = custom/script
+interval = 1
+;exec = /home/swango/bin/currentlyplaying.sh
+exec = $HOME/.local/bin/mpris.py -s Pithos
+format = <label>
+label = %output%
+label-separator = |
+label-separator-padding = 2
+;label-minlen = 60
+;label-maxlen = 40
+
+[module/cava2]
+type = custom/script
+;interval = 0.01
+tail = true
+exec = $HOME/.local/bin/cava.py
+format = <label>
+format-font = 5
+label = %output%
+label-separator = |
+label-separator-padding = 2
+;label-minlen = 60
+;label-maxlen = 40
+
+[module/archupdates]
+type = custom/script
+interval = 600
+exec = $HOME/.config/polybar/scripts/arch-updates.sh
+format = <label>
+label = %output%
+
+;format-underline = #1db954
+
+[colors]
+
+xcolor0 = ${xrdb:color0}
+xcolor1 = ${xrdb:color1}
+xcolor2 = ${xrdb:color2}
+xcolor3 = ${xrdb:color3}
+xcolor4 = ${xrdb:color4}
+xcolor5 = ${xrdb:color5}
+xcolor6 = ${xrdb:color6}
+xcolor7 = ${xrdb:color7}
+xcolor8 = ${xrdb:color8}
+xcolor9 = ${xrdb:color9}
+xcolor10 = ${xrdb:color10}
+xcolor11 = ${xrdb:color11}
+xcolor12 = ${xrdb:color12}
+xcolor13 = ${xrdb:color13}
+xcolor14 = ${xrdb:color14}
+xcolor15 = ${xrdb:color15}
+
+transparent = #00000000
+background = #00000000
+foreground = ${colors.xcolor15}
+
+shade1 = #652472
+shade2 = #babdb6
+shade3 = #babdb6
+shade4 = #652472
+
+;alert = xcolor1
+volume-min = #a3be8c
+volume-med = #ebcb8b
+volume-max = #bf616a
+
+
+
+################################################################################
+################################################################################
+############                       MODULES ARROWS                     ##########
+################################################################################
+################################################################################
+
+
+[module/solidright]
+; pink on black
+type = custom/text
+content = "%{T16}%{T-}"
+content-font = 12
+;content-foreground = ${colors.shade1}
+;content-background = ${colors.background}
+content-foreground = #CC434C5E
+content-background = #00000000
+
+[module/negativeright]
+;black on pink
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade1}
+content-background = ${colors.background}
+
+[module/solidleft]
+; pink on black
+type = custom/text
+content = "%{T16}%{T-}"
+content-font = 2
+;content-foreground = ${colors.shade1}
+;content-background = ${colors.background}
+content-foreground = #CC434C5E
+content-background = #00000000
+
+[module/negativeleft]
+; pink on black
+type = custom/text
+;content = "%{T5}%{T-}"
+content = ""
+content-font = 8
+content-foreground = ${colors.shade1}
+content-background = ${colors.background}
+
+[module/solidright2]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/negativeright2]
+;black on pink
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/solidlef2t]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/negativeleft2]
+; pink on black
+type = custom/text
+content = "%{T4}%{T-}"
+content-font = 2
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+[module/blocksolid2]
+; pink on black
+type = custom/text
+content = "%{T4}ﮋﮋ%{T-}"
+content-font = 7
+content-foreground = ${colors.shade4}
+content-background = ${colors.background}
+
+
+################################################################################
+################################################################################
+############                       MODULES A-Z                      ############
+################################################################################
+################################################################################
+
+[module/arch-aur-updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-all-updates.sh
+interval = 1000
+label = Updates: %output%
+format-foreground = #ffffff
+format-background = #F07178
+format-prefix = "  "
+format-prefix-foreground = #ffffff
+
+################################################################################
+
+[module/aur-updates]
+type = custom/script
+exec = cower -u | wc -l
+interval = 1000
+label = Aur: %output%
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = "  "
+format-prefix-foreground = #FFBB00
+format-underline = #FFBB00
+    
+################################################################################
+
+[module/battery2]
+;https://github.com/jaagr/polybar/wiki/Module:-battery
+type = internal/battery
+battery = BAT1
+adapter = AC0
+full-at = 70
+
+format-charging = <animation-charging>  <label-charging>
+label-charging = %percentage%%
+label-charging-foreground = ${colors.shade3}
+format-charging-background = ${colors.shade1}
+format-charging-padding = 10
+
+format-discharging = <ramp-capacity>  <label-discharging>
+label-discharging = %percentage%%
+;label-discharging-foreground = ${colors.shade3}
+;format-discharging-background = ${colors.shade1}
+
+format-full = <format-full-prefix> 100%
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.shade3}
+;format-background = ${colors.shade1}
+
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+ramp-capacity-3 =  
+ramp-capacity-4 =  
+ramp-capacity-foreground = ${colors.shade3}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.shade3}
+animation-charging-framerate = 750
+
+################################################################################
+
+[module/carousel]
+type = custom/script
+exec = ~/.config/polybar/scripts/theme-change-prompt.sh
+click-left = ~/.config/polybar/scripts/theme-change-prompt.sh --show &
+click-right = ~/.config/polybar/scripts/theme-change-prompt.sh --show &
+format = "%{T6} 履 %{T-}"
+format-foreground = ${colors.shade2}
+format-background = ${colors.background}
+
+################################################################################
+
+[module/cpu1]
+type = internal/cpu
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+;   
+format-prefix = " "
+format-prefix-foreground = #cd1f3f
+format-underline = #645377
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label> <ramp-coreload>
+
+format-padding = 2
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label-font = 5
+label = Cpu %percentage:3%%
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 5
+ramp-coreload-0-foreground = ${colors.shade1}
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 5
+ramp-coreload-1-foreground = ${colors.shade1}
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 5
+ramp-coreload-2-foreground = ${colors.shade1}
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 5
+ramp-coreload-3-foreground = ${colors.shade1}
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 5
+ramp-coreload-4-foreground = ${colors.shade1}
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 5
+ramp-coreload-5-foreground = ${colors.shade1}
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 5
+ramp-coreload-6-foreground = ${colors.shade1}
+ramp-coreload-7 = █
+ramp-coreload-7-font = 5
+ramp-coreload-7-foreground = ${colors.shade1}
+
+################################################################################
+
+[module/cpu2]
+type = internal/cpu
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = " "
+format-prefix-foreground = ${colors.background}
+
+label-font = 1
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label>
+
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = Cpu %percentage:3%%
+
+################################################################################
+
+[module/date]
+type = internal/date
+interval = 5
+date = "%b %d, %Y"
+; date-alt = " %a %b %d, %Y"
+time = %H:%M%
+time-alt = %b %d, %Y
+;%l:%M%p
+;format-prefix = " "
+format-prefix = " "
+format-prefix-foreground = ${colors.shade1}
+format-foreground = ${colors.shade3}
+format-background = ${colors.shade1}
+label = "%time% "
+
+#################################################################################
+
+[module/calender]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup &
+label = " "
+format = <label>
+format-foreground = ${colors.shade3}
+format-background = ${colors.shade1}
+
+################################################################################
+
+[module/filesystem2]
+type = internal/fs
+mount-0 = /
+interval = 30
+fixed-values = false
+spacing = 4
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+format-mounted-foreground = ${colors.shade1}
+format-mounted-background = ${colors.background}
+format-mounted-underline = #fe0000
+
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = %mountpoint% : %used% used of %total%
+
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+label-unmounted = %mountpoint% not mounted
+format-unmounted-foreground = ${colors.shade1}
+format-unmounted-background = ${colors.background}
+;format-unmounted-underline = ${colors.alert}
+
+################################################################################
+
+[module/kernel]
+type = custom/script
+exec = uname -r
+tail = false
+interval = 1024
+
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = "  "
+format-prefix-foreground = #0084FF
+format-underline = #4B5665
+
+################################################################################
+
+[module/load-average]
+type = custom/script
+exec = uptime | grep -ohe 'load average[s:][: ].*' | awk '{ print $3" "$4" "$5"," }' | sed 's/,//g'
+interval = 100
+
+label = %output:10%
+
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = "  "
+format-prefix-foreground = #62FF00
+format-underline = #62FF00
+
+################################################################################
+
+[module/memory1]
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %percentage_used%%
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = #3384d0
+bar-used-fill = 
+bar-used-empty = 
+bar-used-empty-foreground = #ffffff
+
+format = <label> <bar-used>
+format-prefix = "  "
+format-prefix-foreground = #3384d0
+format-underline = #4B5665
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+
+################################################################################
+
+[module/memory2]
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %percentage_used%%
+
+format =  <label>
+format-prefix = 
+;
+format-prefix-foreground = ${colors.shade3}
+format-foreground = ${colors.shade3}
+format-background = ${colors.shade1}
+
+################################################################################
+
+[module/memory3]
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %gb_used%/%gb_free%
+
+format = Mem <label>
+format-prefix = "  "
+format-prefix-foreground = #3384d0
+format-underline = #3384d0
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+
+
+################################################################################
+
+[module/mpd2]
+type = internal/mpd
+format-online =  "<label-song>  <bar-progress>"
+;format-online =  "<label-song>  <bar-progress> <icon-prev>  <icon-stop>  <toggle>  <icon-next>"
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+label-song-maxlen = 40
+label-song-ellipsis = true
+bar-progress-width = 10
+bar-progress-indicator = 
+bar-progress-fill = 
+bar-progress-empty = 
+bar-progress-fill-foreground = #ff0
+bar-progress-fill-background = ${colors.background}
+bar-progress-indicator-foreground = ${colors.shade1}
+format-online-foreground = ${colors.shade1}
+format-online-background = ${colors.background}
+
+################################################################################
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t15:{artist}:}{:artist: - :}{:t15:{title}:}'
+;♫♪
+tail = true
+format-foreground = ${colors.shade2}
+format-background = ${colors.background}
+label = %output%
+
+###############################################################################
+
+[module/pacman-updates]
+type = custom/script
+;exec = pacman -Qu | wc -l
+exec = checkupdates | wc -l
+interval = 1000
+label = Repo: %output%
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = "  "
+format-prefix-foreground = #FFBB00
+format-underline = #FFBB00
+
+################################################################################
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = $HOME/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+;format-foreground = ${colors.shade3}
+;format-background = ${colors.shade1}
+
+###############################################################################
+
+[module/release]
+type = custom/script
+exec = (lsb_release -d | awk {'print $2'} ;echo " "; lsb_release -r | awk {'print $2'}) | tr -d '\\n'
+interval = 6000
+
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = "  "
+format-prefix-foreground = #62FF00
+format-underline = #62FF00
+
+################################################################################
+
+[module/temperature1]
+type = internal/temperature
+; Thermal zone to use
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+
+warn-temperature = 70
+format = <ramp> <label>
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-underline = #c72581
+format-warn = <ramp> <label-warn>
+format-warn-underline = #c7254f
+label = %temperature%
+label-warn =  %temperature%
+label-warn-foreground = #c7254f
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground =${colors.shade1}
+
+################################################################################
+
+[module/temperature2]
+type = custom/script
+exec = ~/.config/polybar/scripts/tempcores.sh
+interval = 2
+format-padding = 1
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-underline = #C1B93E
+format-prefix-foreground = #C1B93E
+label =  %output:0:150:%
+
+################################################################################
+
+[module/uptime2]
+type = custom/script
+exec = uptime | awk -F, '{sub(".*up ",x,$1);print $1}'
+interval = 100
+label = Uptime : %output%
+
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+format-prefix = " "
+format-prefix-foreground = #C15D3E
+format-underline = #C15D3E
+
+################################################################################
+
+[module/wifi]
+type = internal/network
+interface = ens33
+
+interval = 1.0
+accumulate-stats = false
+unknown-as-up = true
+
+format-foreground = 
+format-background = 
+
+;format-connected = <label-connected>
+format-connected = <ramp-signal> <label-connected>
+;format-connected-background = ${colors.shade1}
+;format-connected-foreground = ${colors.shade3}
+; format-connected-padding = 1
+
+format-disconnected = <label-disconnected>
+;format-disconnected-background = ${colors.shade1}
+;format-disconnected-foreground = ${colors.shade3}
+; format-disconnected-padding = 1
+
+;label-connected = " %downspeed%"
+label-connected = "%essid%"
+label-disconnected = "睊 offline"
+;label-disconnected =  "Not Connected"
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+;ramp-signal-0 = ▁
+;ramp-signal-1 = ▂
+;ramp-signal-2 = ▃
+;ramp-signal-3 = ▄
+;ramp-signal-4 = ▅
+;ramp-signal-5 = ▆
+click-right = exec networkmanager_dmenu
+
+################################################################################
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label> <bar>
+format-prefix = "   "
+format-prefix-foreground = ${colors.shade1}
+format-prefix-background = ${colors.background}
+format-prefix-underline = #9f78e1
+format-underline = #9f78e1
+label = %percentage%%
+bar-width = 10
+bar-indicator = 
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = 
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = 
+bar-empty-font = 2
+bar-empty-foreground = #fff
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+
+################################################################################
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.shade1}
+format-prefix-background = ${colors.background}
+format-prefix-underline = #3ecfb2
+format-foreground = ${colors.shade1}
+format-background = ${colors.background}
+
+label-layout = %layout%
+label-layout-underline = #3ecfb2
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.background}
+label-indicator-underline = ${colors.shade1}
+
+################################################################################
+
+[module/xwindow]
+type = internal/xwindow
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 35
+
+format-prefix = "  "
+;format-foreground = ${colors.shade2}
+;format-background = ${colors.background}
+
+###############################################################################
+# vim:ft=dosini
